@@ -115,7 +115,8 @@
                 <div class="phone">
                   <i class="bi bi-phone"></i>
                   <h4>Call:</h4>
-                  <p>+91 0000 0000 00</p>
+                  <p>+91 9960307221</p>
+                  <p>+91 8087169165</p>
                 </div>
 
               </div>
@@ -339,7 +340,8 @@
         // Send the form data using fetch
         console.log("data==>", JSON.stringify(data));
         var req = JSON.stringify(data);
-        fetch("http://localhost:9191/api/data", {
+      // fetch("http://localhost:9191/api/data", {
+         fetch("http://13.127.137.211/api/data", {
           body: req,
           headers: {
             "Content-Type": "application/json",
@@ -351,7 +353,6 @@
           .then(function (response) {
 
             if (response.ok) {
-              alert("Your Register Successfully")
                document.getElementById("contact-form").reset();
               messageElement.textContent = "Form submitted successfully!";
               // Clear the form fields
@@ -362,6 +363,10 @@
               addressInput.value = "";
               instrumentsInput.value = "";
             } else {
+              if (response.status === 400) {
+                
+              }
+
               throw new Error("Form submission failed");
             }
           })
