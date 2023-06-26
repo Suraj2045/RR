@@ -28,6 +28,14 @@ const pool = mysql.createPool({
 
 // app.options('/api/data', cors(corsOptions)); 
 
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'https://your-domain.com'); // Replace with your domain
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+//   next();
+// });
+
 app.post('/api/data', (req, res) => {
   console.log("body--->",req.body);
 
@@ -69,7 +77,7 @@ console.log(req.body);
 });
 
 // Start server
-const PORT = process.env.PORT || 9191;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
