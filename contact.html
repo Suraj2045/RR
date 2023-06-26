@@ -339,21 +339,19 @@
         // console.log("print data",typeof( JSON.stringify(data)));
         // Send the form data using fetch
         console.log("data==>", JSON.stringify(data));
-        var req = JSON.stringify(data);
-      // fetch("http://localhost:9191/api/data", {
-         fetch("http://13.127.137.211/api/data", {
-          body: req,
+
+        // fetch("http://localhost:9191/api/data", {
+        fetch("https://localhost:9191/api/data", {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Referrer-Policy": "strict-origin-when-cross-origin"
           },
-          method: "POST",
-
+          body: JSON.stringify(data),
         })
           .then(function (response) {
 
             if (response.ok) {
-               document.getElementById("contact-form").reset();
+              document.getElementById("contact-form").reset();
               messageElement.textContent = "Form submitted successfully!";
               // Clear the form fields
               nameInput.value = "";
@@ -364,7 +362,7 @@
               instrumentsInput.value = "";
             } else {
               if (response.status === 400) {
-                
+
               }
 
               throw new Error("Form submission failed");
