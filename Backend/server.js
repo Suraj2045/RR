@@ -16,17 +16,17 @@ const pool = mysql.createPool({
   database: "rudrarupam",
 });
 
-// CORS configuration
-const corsOptions = {
-  origin: "https://rudra-roopam.netlify.app/", // Replace with the actual origin of your HTML page
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: "Content-Type,Authorization",
-  credentials: true,
-};
+// // CORS configuration
+// const corsOptions = {
+//   origin: "https://rudra-roopam.netlify.app/", // Replace with the actual origin of your HTML page
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: "Content-Type,Authorization",
+//   credentials: true,
+// };
 
-app.options('/api/data', cors(corsOptions)); 
+// app.options('/api/data', cors(corsOptions)); 
 
 app.post('/api/data', (req, res) => {
   console.log("body--->",req.body);
