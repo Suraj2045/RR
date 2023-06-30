@@ -339,85 +339,63 @@
         // console.log("print data",typeof( JSON.stringify(data)));
         // Send the form data using fetch
         console.log("data==>", JSON.stringify(data));
+        var body = JSON.stringify(data);
+        //fetch("http://localhost:9191/api/data", {
+        //      fetch("http://13.127.137.211/api/data", {
 
-        // fetch("http://localhost:9191/api/data", {
-        fetch("https://localhost:9191/api/data", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
+        //       headers: {
+        //         "Content-Type": "application/json",
+        //         "Referrer-Policy": "strict-origin-when-cross-origin"
+        //       },
+        //       method: "POST",
+        //       body: req,
+
+        //     })
+        //       .then(function (response) {
+
+        //         if (response.ok) {
+        //            document.getElementById("contact-form").reset();
+        //           messageElement.textContent = "Form submitted successfully!";
+        //           // Clear the form fields
+        //           nameInput.value = "";
+        //           ageInput.value = "";
+        //           genderInput.value = "";
+        //           contactInput.value = "";
+        //           addressInput.value = "";
+        //           instrumentsInput.value = "";
+        //         } else {
+        //           if (response.status === 400) {
+
+        //           }
+
+        //           throw new Error("Form submission failed");
+        //         }
+        //       })
+        //       .catch(function (error) {
+        //         messageElement.textContent = error.message;
+        //       });
+        //   } else {
+        //     var messageElement = document.getElementById("message");
+        //     messageElement.textContent = "Please fill in all the required fields.";
+        //   }
+        // });
+        fetch('/.netlify/backendapi/formdata.js', {
+          method: 'POST',
+          body: body
         })
-          .then(function (response) {
-
-            if (response.ok) {
-              document.getElementById("contact-form").reset();
-              messageElement.textContent = "Form submitted successfully!";
-              // Clear the form fields
-              nameInput.value = "";
-              ageInput.value = "";
-              genderInput.value = "";
-              contactInput.value = "";
-              addressInput.value = "";
-              instrumentsInput.value = "";
-            } else {
-              if (response.status === 400) {
-
-              }
-
-              throw new Error("Form submission failed");
-            }
+          .then(response => response.json())
+          .then(data => {
+            // Process the response data
+            console.log(data);
           })
-          .catch(function (error) {
-            messageElement.textContent = error.message;
+          .catch(error => {
+            console.error('Error:', error);
           });
-      } else {
-        var messageElement = document.getElementById("message");
-        messageElement.textContent = "Please fill in all the required fields.";
-      }
-    });
+        }
+      });
+
   </script>
 
-  <!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Find the form element
-      var form = document.getElementById('contact-form');
-  
-      // Add a submit event listener to the form
-      form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the form from submitting normally
-  
-        // Create a new FormData object and populate it with the form data
-        var formData = new FormData(form);
-  
-        // Create a new XMLHttpRequest object
-        var xhr = new XMLHttpRequest();
-  
-        // Set up the HTTP POST request
-        xhr.open('POST', 'http://localhost:9191/api/data', true);
-  
-        // Set the Content-Type header to indicate form data
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  
-        // Handle the response from the server
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-              // Request was successful
-              console.log('Form submitted successfully');
-            } else {
-              // Request failed
-              console.error('Error submitting form');
-            }
-          }
-        };
-  
-        // Send the form data
-        xhr.send(formData);
-      });
-    });
-  </script>
-   -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
