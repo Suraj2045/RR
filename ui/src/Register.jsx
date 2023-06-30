@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { BiCurrentLocation, BiLogoInstagramAlt, BiLogoFacebookCircle, BiSolidPhoneCall } from 'react-icons/bi';
 import rrImage2 from './image/RR2.jpeg';
+import swal from 'sweetalert';
+
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -48,10 +50,17 @@ const Register = () => {
             })
                 .then((response) => {
                     if (response.ok) {
-                        console.log("sucess");
+                        setName('');
+                        setAge('');
+                        setGender('');
+                        setContact('');
+                        setAddress('');
+                        setInstruments('');
+                        setBloodGroup('');
+                        setInstagram('');
+                        swal("Register", "Your Register successfully", "success");
                     } else {
-                        console.log("fail");
-                        // Handle form submission error
+                        swal("Fail", "Contact already exists", "error");
                     }
                 })
                 .catch((error) => {
@@ -164,9 +173,10 @@ const Register = () => {
                                     <select className="form-control" name="instruments" id="instruments" placeholder="Select Instruments*" required value={instruments}
                                         onChange={(e) => setInstruments(e.target.value)}>
                                         <option value="" disabled selected>Select Instruments*</option>
-                                        <option value="Dhol">Dhol</option>
-                                        <option value="Tasha">Tasha</option>
-                                        <option value="Dhwaj">Dhwaj</option>
+                                        <option value="Dhol">ढोल</option>
+                                        <option value="Tasha">ताशा</option>
+                                        <option value="Dhwaj">ध्वज</option>
+                                        <option value="Zanj">झांज</option>
                                     </select>
                                 </div>
 
