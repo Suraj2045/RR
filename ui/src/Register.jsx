@@ -126,7 +126,7 @@ const Register = () => {
                             <form id="contact-form" className="" onSubmit={handleSubmit}>
                                 <div className="row">
                                     <div className="col-md-6 form-group">
-                                        <input type="text" name="name" className="form-control" id="name" placeholder="Your Name*" pattern="^[a-zA-Z\s]+$" title="Please Enter only Characters" required value={name}
+                                        <input type="text" name="name" className="form-control" id="name" placeholder="Your Name*"  pattern="[A-Za-z]+" title="Please Enter only Characters" required value={name}
                                             onChange={(e) => setName(e.target.value)} />
                                     </div>
                                     <div className="col-md-6 form-group mt-3 mt-md-0">
@@ -161,7 +161,7 @@ const Register = () => {
                                 </div>
 
                                 <div className="form-group mt-3">
-                                    <input type="number" className="form-control" name="contact1" id="contact1" placeholder="Contact*" pattern="^\d{10}$" title="Please Enter 10 digit Number" required value={contact}
+                                    <input type="number" className="form-control" name="contact1" id="contact1" placeholder="Contact*" pattern="[0-9]{10}" title="Please Enter 10 digit Number" required value={contact}
                                         onChange={(e) => setContact(e.target.value)} />
                                 </div>
                                 <div className="form-group mt-3">
